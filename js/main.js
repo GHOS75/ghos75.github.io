@@ -8,6 +8,45 @@ $('.back').click(function(){
 
 });
 
+setTimeout(function() {
+	
+	$('.loader-thing').stop().animate({
+
+		backgroundColor: 'rgba(0,0,0,0)'
+
+	}, 1500, "swing", function(){
+		typeWriter2('ghost interactive', 0);
+		setTimeout(function() {
+			typeWriter2('forging ideas into code', 0);
+		},2500);
+		
+		setTimeout(function() {
+			
+			$('h2').stop().animate({
+
+				opacity: '0'
+
+			}, 500, "swing");
+			
+			$(".loader").stop().animate({
+
+				left: '-100%'
+
+			}, 500, "swing", function(){
+				$(".loader").css('display','none');
+				$(".body-width").css('display','block');
+				HomeScreen ();
+			});
+			
+		},5000);
+		
+	});
+	
+	$(".frame-1").attr("src","https://www.youtube.com/embed/-9mdVLIyZp8");
+	$(".frame-2").attr("src","https://www.youtube.com/embed/laaQZW6nhHg");
+},2500);
+
+
 //--------------------------Main Page Animation--------------------------
 
 function Logo () {
@@ -87,6 +126,20 @@ function typeWriter(text, i) {
 			typeWriter(text, i + 1)
 
 		}, 20);
+	}
+}
+
+function typeWriter2(text, j) {
+	
+	if (j < (text.length)) {
+
+		document.querySelector("h2").innerHTML = text.substring(0, j+1);
+
+		setTimeout(function() {
+
+			typeWriter2(text, j + 1)
+
+		}, 50);
 	}
 }
 
@@ -512,7 +565,11 @@ function ContactScreen () {
 $(".logo").click(function(){
 	
 	location.hash = 'home';
-
+	
+//	if(location.hash == '#home') {
+//		location.reload();
+//		console.log('hello');
+//	}
 });
 
 $("#tile-3").click(function(){
@@ -761,38 +818,47 @@ window.onhashchange = function() {
 	
 	if (location.hash == "#home") {
 		HomeScreen ();
+		$(".logo").css('display','none');
 	}
 	
 	if (location.hash == "#about") {
 		AboutScreen ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#contact") {
 		ContactScreen ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#projects") {
 		ProjectsScreen ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#skills") {
 		SkillsScreen ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#projects/tbd") {
 		CaseStudy1 ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#projects/abstract") {
 		CaseStudy2 ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#projects/portfolio") {
 		CaseStudy3 ();
+		$(".logo").css('display','block');
 	}
 	
 	if (location.hash == "#projects/showreel") {
 		CaseStudy4 ();
+		$(".logo").css('display','block');
 	}
 }
 
@@ -1027,6 +1093,67 @@ $('#project-number-4').click(function(){
 });
 
 function CaseStudy4 () {
+	
+	$("body").css('overflow-y', 'auto');
+	
+	$('.project-number').removeClass('animated zoomIn');
+	
+	$('#project-number-2').addClass('animated zoomOut');
+	$('#project-number-3').addClass('animated zoomOut');
+	$('#project-number-1').addClass('animated zoomOut');
+	
+	$('#f-projects').css('display', 'none');
+	
+	$("#project-number-2").stop().animate({
+
+		height: '0'
+
+	}, 300, "swing");
+	
+	$("#project-number-3").stop().animate({
+
+		height: '0'
+
+	}, 300, "swing");
+	
+	$("#project-number-1").stop().animate({
+
+		height: '0'
+
+	}, 300, "swing");
+	
+	
+	$("#project-number-4").css('top', '0');
+	$("#project-number-4").css('left', '0');
+	$("#project-number-4").css('position', 'absolute');
+	
+	$("#project-number-4").stop().animate({
+
+		width: '98%',
+		height: '1px',
+		marginTop: '-10px'
+
+	}, 450, "swing", function(){
+
+		typeWriter('case_study: Showreel', 0);
+		$('.case-4').css('display', 'block');
+		$('.case-4').addClass('animated fadeIn');
+		
+		$('#project-number-2').css('display', 'none');
+		$('#project-number-3').css('display', 'none');
+		$('#project-number-1').css('display', 'none');
+		
+	});
+	
+}
+
+$('#project-number-5').click(function(){
+	
+	location.hash = 'projects/showreel';
+	
+});
+
+function CaseStudy5 () {
 	
 	$("body").css('overflow-y', 'auto');
 	
